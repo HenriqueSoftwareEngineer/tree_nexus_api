@@ -1,4 +1,5 @@
-![alt text](<TREE NEXUS-1.png>)
+
+![TREE NEXUS](https://github.com/user-attachments/assets/2e7d4c76-b3d8-4563-a2b7-28c572675c25)
 
 # TREE NEXUS API
 The Tree Nexus API is a tool for searching products categorized into different categories and their subcategories. A Binary Tree Data Structure is used. The repository is for study purposes.
