@@ -1,0 +1,89 @@
+1. Planejamento e Modelagem do Sistema
+Objetivo: Criar uma API que gerencie uma estrutura hierárquica (árvore) com operações CRUD.
+Estrutura: Cada nó da árvore pode representar qualquer entidade que tenha uma relação hierárquica 
+(como categorias, posts, funcionários, etc.).
+Componentes principais:
+
+Nó (Node): Contém um identificador único, um link para o nó pai, dados específicos e outros atributos que você escolher.
+Árvore (Tree): Representa a estrutura hierárquica completa, com operações para manipular subárvores.
+2. Escolha das Tecnologias
+Back-end:
+Node.js com Express.js para criar os endpoints RESTful.
+Mongoose para trabalhar com MongoDB, ideal para modelar a estrutura de dados em árvore.
+Banco de Dados:
+MongoDB: Armazenamento de dados hierárquicos (documentos com subdocumentos).
+PostgreSQL: Se preferir um banco de dados relacional, com suporte a CTEs (Common Table Expressions) para hierarquia.
+Autenticação:
+JWT (JSON Web Token) para autenticação de usuários.
+Ferramentas de Teste:
+Jest para testes unitários.
+Supertest para testar os endpoints da API.
+3. Estrutura de Dados em Árvore
+A modelagem da árvore pode ser feita de várias formas dependendo da escolha do banco de dados. Para MongoDB, uma estrutura típica seria:
+
+
+{
+  "_id": ObjectId("123"),
+  "name": "Root Node",
+  "parentId": null,
+  "children": [
+    {
+      "name": "Child 1",
+      "parentId": ObjectId("123"),
+      "children": []
+    },
+    {
+      "name": "Child 2",
+      "parentId": ObjectId("123"),
+      "children": []
+    }
+  ]
+}
+
+
+
+4. EndPoints da API
+A API pode ter os seguintes endpoints:
+
+POST /node: Criação de um novo nó.
+
+Payload: { "name": "Node Name", "parentId": "Parent Node ID" }
+Resposta: { "message": "Node created successfully", "node": {...} }
+GET /node/
+: Recuperação de um nó específico.
+
+Resposta: { "node": {...} }
+PUT /node/
+: Atualização de um nó específico.
+
+Payload: { "name": "Updated Name" }
+Resposta: { "message": "Node updated successfully", "node": {...} }
+DELETE /node/
+: Exclusão de um nó.
+
+Resposta: { "message": "Node deleted successfully" }
+GET /tree/
+: Recuperação de toda a subárvore a partir de um nó específico.
+
+Resposta: { "tree": {...} }
+GET /tree: Recuperação da árvore inteira (ou raiz da árvore).
+
+Resposta: { "tree": {...} }
+5. Engenharia de Requisitos
+Funcionais:
+CRUD completo para os nós da árvore.
+Navegação entre diferentes níveis de hierarquia.
+Suporte para consultas eficientes de subárvores.
+Não Funcionais:
+Desempenho: A API deve retornar resultados rapidamente mesmo com grandes árvores.
+Escalabilidade: Suporte para um número crescente de nós sem impacto significativo no desempenho.
+Segurança: Implementação de autenticação baseada em JWT, garantindo que apenas usuários autorizados possam realizar operações.
+6. Desenvolvimento
+Etapa 1: Defina o modelo de dados (schemas) para os nós.
+Etapa 2: Implemente os endpoints para CRUD e navegação hierárquica.
+Etapa 3: Teste a API com casos de uso reais para garantir que a árvore está sendo manipulada corretamente.
+7. Testes
+Unitários: Crie testes para as operações de criação, leitura, atualização e exclusão de nós.
+Funcionais: Teste os fluxos de navegação na árvore (acessar subárvores, encontrar ancestrais, etc.).
+Desempenho: Realize testes de carga para garantir que a API não tenha gargalos ao processar grandes árvores.
+Com esses passos, você terá uma base sólida para começar a construir a TreeNexus_API. Boa sorte no desenvolvimento!
